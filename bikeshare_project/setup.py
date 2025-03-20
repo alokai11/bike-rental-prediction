@@ -49,7 +49,9 @@ setup(
     packages=find_packages(exclude=("tests",)),
     package_data={"regression_model": ["VERSION"]},
     install_requires=list_reqs(),
-    extras_require={},
+       extras_require={
+       'api': ['fastapi', 'uvicorn'],
+    },
     include_package_data=True,
     license="BSD-3",
     classifiers=[
@@ -66,4 +68,5 @@ setup(
         "Programming Language :: Python :: Implementation :: CPython",
         "Programming Language :: Python :: Implementation :: PyPy",
     ],
+    
 )
