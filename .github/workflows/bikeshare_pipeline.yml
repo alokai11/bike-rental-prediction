@@ -16,6 +16,7 @@ jobs:
         with:
           src: "./bikeshare_project/bikeshare_model ./bikeshare_project/bike_sharing_api ./bikeshare_project/tests"
           options: "--check"
+          use_pyproject: true
 
       - name: Set up Python
         uses: actions/setup-python@v5
