@@ -1,5 +1,6 @@
 import sys
 from pathlib import Path
+
 file = Path(__file__).resolve()
 parent, root = file.parent, file.parents[1]
 sys.path.append(str(root))
@@ -32,20 +33,19 @@ def health() -> dict:
     return health.dict()
 
 
-
 example_input = {
     "inputs": [
         {
-            "dteday": "2012-11-05", # datetime.datetime.strptime("2012-11-05", "%Y-%m-%d"),  
-            "season": "winter", 
+            "dteday": "2012-11-05",  # datetime.datetime.strptime("2012-11-05", "%Y-%m-%d"),
+            "season": "winter",
             "hr": "6am",
-            "holiday": "No", 
+            "holiday": "No",
             "weekday": "Mon",
             "workingday": "Yes",
             "weathersit": "Mist",
             "temp": 6.10,
             "atemp": 3.0014,
-            "hum": 19.0012,	
+            "hum": 19.0012,
             "windspeed": 19.0012,
             "yr": 2012,
             "mnth": "November",
@@ -55,13 +55,15 @@ example_input = {
 
 
 @api_router.post("/predict", response_model=schemas.PredictionResults, status_code=200)
-async def predict(input_data: schemas.MultipleDataInputs = Body(..., example=example_input)) -> Any:
+async def predict(
+    input_data: schemas.MultipleDataInputs = Body(..., example=example_input)
+) -> Any:
     """
     Bike rental count prediction with the bikeshare_model
     """
 
     input_df = pd.DataFrame(jsonable_encoder(input_data.inputs))
-    
+
     results = make_prediction(input_data=input_df.replace({np.nan: None}))
 
     if results["errors"] is not None:
