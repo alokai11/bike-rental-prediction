@@ -14,7 +14,8 @@ jobs:
       - name: Check format
         uses: psf/black@25.1.0
         with:
-        args: ". --check"
+          options: '--check .'
+          
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
