@@ -11,12 +11,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       
-      - name: Check format
-        uses: psf/black@25.1.0
-        with:
-          src: "./bikeshare_project ./bikeshare_project/bikeshare_model ./bikeshare_project/bike_sharing_api ./bikeshare_project/tests"
-          options: "--check"
-          use_pyproject: true
+      - name: Install black
+        run: |
+          pip install black
+      
+      - name: Check code style
+        run: |
+          cd bikeshare_project
+          black --check --verbose bikeshare_model bike_sharing_api tests
 
       - name: Set up Python
         uses: actions/setup-python@v5
