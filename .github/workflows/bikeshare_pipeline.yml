@@ -14,7 +14,7 @@ jobs:
       - name: Check format
         uses: psf/black@25.1.0
         with:
-          src: "./bikeshare_project/bikeshare_model ./bikeshare_project/bike_sharing_api ./bikeshare_project/tests"
+          src: "./bikeshare_project ./bikeshare_project/bikeshare_model ./bikeshare_project/bike_sharing_api ./bikeshare_project/tests"
           options: "--check"
           use_pyproject: true
 
