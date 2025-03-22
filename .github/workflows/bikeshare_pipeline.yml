@@ -17,8 +17,7 @@ jobs:
       
       - name: Check code style
         run: |
-          cd bikeshare_project
-          black --check --verbose bikeshare_model bike_sharing_api tests
+          black .
 
       - name: Set up Python
         uses: actions/setup-python@v5
