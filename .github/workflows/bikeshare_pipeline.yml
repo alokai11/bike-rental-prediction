@@ -27,7 +27,7 @@ jobs:
       - name: Analyzing code using Pylint
         run: |
           pip install pylint
-          pylint *.py || true
+          pylint bikeshare_project/*.py || true
 
       - name: Install dependencies
         run: |
